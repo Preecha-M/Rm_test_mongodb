@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold">RICE LEAF DISEASES DETECTION</h1>
         <p className="text-lg mt-4">แพลตฟอร์มที่ช่วยคุณตรวจสอบโรคในใบข้าว</p>
         <a href="/detect" className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg mt-6">
-          Click Here To Start
+          คลิ๊กที่นี้เพื่อเริ่มวิเคราะห์
         </a>
       </div>
     </div>

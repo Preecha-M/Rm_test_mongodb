@@ -3,10 +3,19 @@ import { useState } from "react";
 
 export default function Detect() {
   const [image, setImage] = useState(null);
-  const [result, setResult] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null); // ✅ เพิ่ม state สำหรับพรีวิวรูป
+  const [result, setResult] = useState("");
 
   const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
+    const file = e.target.files[0];
+    setImage(file);
+    
+    // ✅ สร้าง URL สำหรับพรีวิวรูป
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    } else {
+      setImagePreview(null);
+    }
   };
 
   const handleUpload = async () => {
@@ -48,16 +57,32 @@ export default function Detect() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-green-100">
       <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-        <h2 className="text-2xl font-bold mb-4 text-black">Click To Upload Your Image</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">
+          คลิ๊กเพื่ออัพโหลดรูปของคุณ
+        </h2>
+
+        {/* ✅ แสดงพรีวิวรูปภาพ */}
+        {imagePreview && (
+          <img
+            src={imagePreview}
+            alt="Preview"
+            className="w-40 h-40 object-cover rounded-md mb-4 border"
+          />
+        )}
+
         <input type="file" onChange={handleFileChange} className="mb-4 text-black" />
         <button
           onClick={handleUpload}
           className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
         >
-          Predict
+          วิเคราะห์
         </button>
+
         {result && (
-          <p className="mt-4 font-bold text-green-700">Prediction: {result}</p>
+          <div className="mt-4 text-left bg-gray-200 p-4 rounded">
+            <h3 className="text-lg font-semibold text-green-700">Prediction:</h3>
+            <pre className="text-black whitespace-pre-wrap">{result}</pre>
+          </div>
         )}
       </div>
     </div>

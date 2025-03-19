@@ -20,22 +20,22 @@ export default function Navbar() {
             </Link>
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/" className={`${pathname === "/" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                Home
+                หน้าหลัก
               </Link>
               <Link href="/detect" className={`${pathname === "/detect" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                Detect Here!!
+                วิเคราะห์โรคข้าว
               </Link>
               <Link href="/rice-diseases" className={`${pathname === "/rice-diseases" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                Rice Diseases
+                คลังโรคข้าว
               </Link>
               <Link href="/about" className={`${pathname === "/about" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                About Us
+                เกี่ยวกับเรา
               </Link>
               <Link href="/history" className={`${pathname === "/history" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                History
+                ประวัติการวิเคราะห์
               </Link>
               <Link href="/profile" className={`${pathname == "/profile" ? "text-green-500" : "text-black hover:text-green-500"}`}>
-                Profile
+                ข้อมูลส่วนตัว
               </Link>
             </div>
           </div>
@@ -44,11 +44,11 @@ export default function Navbar() {
           <div>
             {isLoggedIn ? (
               <button onClick={logout} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">
-                Logout
+                ออกจากระบบ
               </button>
             ) : (
               <button onClick={() => router.push("/login")} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">
-                Login
+                ลงชื่อเข้าใช้
               </button>
             )}
           </div>
